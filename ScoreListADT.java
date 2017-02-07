@@ -1,11 +1,3 @@
-///////////////////////////////////////////////////////////////////////////////
-// Semester:         CS367 Lec002 Spring 2017 
-// PROJECT:          ScoreList and Score
-// FILE:             ScoreListADT.java
-//
-// Author: Deb Deppeler
-//
-//////////////////////////// 80 columns wide //////////////////////////////////
 
 /** 
  * A container that stores references to instances of Score in a 
@@ -47,4 +39,3 @@ public interface ScoreListADT {
 	 */
 	Score get(int i) throws IndexOutOfBoundsException;
 }
-
