@@ -29,7 +29,7 @@
 public class GradeEstimator {
 	/**
 	 * Main method
-   *
+         *
 	 * PRECONDITIONS: (i.e. the incoming list is assumed to be non-null)
 	 * 
 	 * POSTCONDITIONS: (i.e. the incoming list has been reordered)
@@ -66,12 +66,12 @@ public class GradeEstimator {
 	 *
 	 * @param gradeInfo         String name of input file
 	 * @return gradeEstimator   Reference to GradeEstimator object that holds 
-	 * 							            all of the data needed to estimate a letter grade
+	 * 			    all of the data needed to estimate a letter grade
 	 */
 	public static GradeEstimator createGradeEstimatorFromFile(String gradeInfo) 
 	throws FileNotFoundException, GradeFileFormatException  {
 		
-    //Create new ScoreList of size 10
+                //Create new ScoreList of size 10
 		ScoreList scoreList = new ScoreList();
 		
 		try {
@@ -83,7 +83,7 @@ public class GradeEstimator {
 			Scanner scnr = new Scanner(file);
 			
 			while (scnr.hasNextLine()) {
-        //To be done: need to get Score to add
+                                //To be done: need to get Score to add
 				scoreList.add();
 			}
 		} catch (FileNotFoundException e) {
@@ -97,9 +97,9 @@ public class GradeEstimator {
 		return gradeEstimator;
 	}
 	
-		/**
+	/**
 	 * getEstimateReport
-   *
+         *
 	 * PRECONDITIONS: (i.e. the incoming list is assumed to be non-null)
 	 * 
 	 * POSTCONDITIONS: (i.e. the incoming list has been reordered)
@@ -107,8 +107,8 @@ public class GradeEstimator {
 	 * @return estimate Report     Formatted String representing grade estimate
 	 */
 	public String getEstimateReport() {
-    //String.format("%7.2f", weightedAvgScores);
-    //String.format("%5.2f", unweightedAvgScores);
+                //String.format("%7.2f", weightedAvgScores);
+                //String.format("%5.2f", unweightedAvgScores);
 		return estimateReport;
 	}
 }
