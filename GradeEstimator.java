@@ -1,10 +1,14 @@
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
+
 /////////////////////////////////////////////////////////////////////////////
 // Semester:         CS367 Spring 2016 
 // PROJECT:          p1
 // FILE:             GradeEstimator.java
 //
 // Authors: Lacy, clacy@wisc.edu, Lecture 001
-// Author1: (name1,email1,netID1,lecture number1)
+// Author1: Matthew Perry, mperry3@wisc.edu, Lecture 001
 // Author2: (name2,email2,netID2,lecture number2)
 //
 // ---------------- OTHER ASSISTANCE CREDITS 
@@ -15,7 +19,6 @@
 // search, be sure to include Web URLs and description of 
 // of any information you find. 
 //////////////////////////// 80 columns wide //////////////////////////////////
-
 
 /**
  * (Write a succinct description of this class here. You should avoid
@@ -37,15 +40,39 @@ public class GradeEstimator {
 	 * @param (parameter name) (Describe the first parameter here)
 	 * @param (parameter name) (Do the same for each additional parameter)
 	 * @return (description of the return value)
+	 * @throws GradeFileFormatException 
+	 * @throws FileNotFoundException 
 	 */
 	public static void main(String[] args) {
+		
+		//Estimate Report String
+		String estReport = "";
+		
+		//Throws exception if not exactly one command line argument is given. 
 		if (args.length != 1) {
 			System.out.println(Config.USAGE_MESSAGE);
 		}
-		else if (args.length == 1) {
-      
-			createGradeEstimatorFromFile();
+		
+		//If a command line argument is given, create a GradeEstimator,
+		//catching any errors that may arise
+		else {
+			try {
+				createGradeEstimatorFromFile(args[0]);
+			}
+			catch (FileNotFoundException e){
+				System.out.println(e);
+				System.exit(0);
+			}
+			catch (GradeFileFormatException e){
+				System.out.println(e);
+				System.exit(0);
+			}
 		}
+		
+		//If a GradeEstimator was successfully created, produce a grade
+		//estimate.
+		estReport = getEstimateReport();
+		System.out.println(estReport);
 	}
 	
 	
@@ -71,7 +98,7 @@ public class GradeEstimator {
 	public static GradeEstimator createGradeEstimatorFromFile(String gradeInfo) 
 	throws FileNotFoundException, GradeFileFormatException  {
 		
-                //Create new ScoreList of size 10
+        //Create new ScoreList of size 10
 		ScoreList scoreList = new ScoreList();
 		
 		try {
@@ -83,7 +110,7 @@ public class GradeEstimator {
 			Scanner scnr = new Scanner(file);
 			
 			while (scnr.hasNextLine()) {
-                                //To be done: need to get Score to add
+                             //To be done: need to get Score to add
 				scoreList.add();
 			}
 		} catch (FileNotFoundException e) {
@@ -99,7 +126,7 @@ public class GradeEstimator {
 	
 	/**
 	 * getEstimateReport
-         *
+     *
 	 * PRECONDITIONS: (i.e. the incoming list is assumed to be non-null)
 	 * 
 	 * POSTCONDITIONS: (i.e. the incoming list has been reordered)

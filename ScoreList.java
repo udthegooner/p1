@@ -8,7 +8,7 @@
 //////////////////////////// 80 columns wide //////////////////////////////////
 
 /**
- * Implements the ScoreListADt and defines the container object ScoreList as 
+ * Implements the ScoreListADT and defines the container object ScoreList as 
  * an array of Score objects. Provides user with methods to determine 
  * the size of the list, add a Score to the list, 
  * remove a Score from a particular index position and
