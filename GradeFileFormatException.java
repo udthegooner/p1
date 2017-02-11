@@ -4,24 +4,10 @@
 // FILE:             GradeFileFormatException.java
 //
 // Authors: Collin Lacy, clacy@wisc.edu, Lecture 001
-// Author1: (name1,email1,netID1,lecture number1)
-// Author2: (name2,email2,netID2,lecture number2)
-//
-// ---------------- OTHER ASSISTANCE CREDITS 
-// Persons: Identify persons by name, relationship to you, and email. 
-// Describe in detail the the ideas and help they provided. 
-// 
-// Online sources: avoid web searches to solve your problems, but if you do 
-// search, be sure to include Web URLs and description of 
-// of any information you find. 
 //////////////////////////// 80 columns wide //////////////////////////////////
-
-
-
 
 /**
  * This class is responsible for handling a custom, checked exception. 
- * 
  * To be thrown when the input file to
  * the GradeEstimator is improperly formatted.
  *
@@ -50,7 +36,7 @@ public class GradeFileFormatException extends Exception {
 	 * class will take care of the work of setting up the message correctly.
 	 * 
 	 *
-	 * @param message	String that describes the error condition for this particular exception
+	 * @param message String that describes the error condition for this particular exception
 	 * 
 	 */
 	public GradeFileFormatException(String message) {
