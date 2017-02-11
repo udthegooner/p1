@@ -42,7 +42,8 @@ public class ScoreIterator implements ScoreIteratorADT <Score> {
 	 */
 	public boolean hasNext() {
 		/*loop which runs from the next position of currPos till the end of the
-		 *  list to check if there are any more scores of the given category*/
+		 *  list to check if there are any more scores of the given category
+		 */
 		for (int i = currPos+1; i < myList.size(); i++)
 			if (myList.get(i).getCategory() == category)
 				return true;
