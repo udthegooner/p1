@@ -35,7 +35,6 @@ public class GradeFileFormatException extends Exception {
 	 * By passing the message into the base class constructor, the base
 	 * class will take care of the work of setting up the message correctly.
 	 * 
-	 *
 	 * @param message String that describes the error condition for this particular exception
 	 * 
 	 */
