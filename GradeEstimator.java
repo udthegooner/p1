@@ -126,7 +126,7 @@ public class GradeEstimator {
 	
 	/**
 	 * getEstimateReport
-     *
+	 *
 	 * PRECONDITIONS: (i.e. the incoming list is assumed to be non-null)
 	 * 
 	 * POSTCONDITIONS: (i.e. the incoming list has been reordered)
