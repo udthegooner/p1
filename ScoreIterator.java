@@ -26,7 +26,6 @@ public class ScoreIterator implements ScoreIteratorADT <Score> {
 
 	/**
 	 * Constructor for the Score object which sets values for the fields
-	 *
 	 */
 	public ScoreIterator (ScoreList myList, String category){
 		this.myList = myList;
