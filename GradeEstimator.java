@@ -1,5 +1,6 @@
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 /////////////////////////////////////////////////////////////////////////////
@@ -30,6 +31,10 @@ import java.util.Scanner;
  * @author (your name)
  */
 public class GradeEstimator {
+	
+	//Create new ScoreList of size 10
+	ScoreList scoreList = new ScoreList();
+	
 	/**
 	 * Main method
          *
@@ -98,19 +103,17 @@ public class GradeEstimator {
 	public static GradeEstimator createGradeEstimatorFromFile(String gradeInfo) 
 	throws FileNotFoundException, GradeFileFormatException  {
 		
-        //Create new ScoreList of size 10
-		ScoreList scoreList = new ScoreList();
-		
 		try {
 			File file = new File(gradeInfo);
 			if (!file.exists()) {
 				throw new FileNotFoundException();
 			}
+			
 			//Create new Scanner object to read input from file
 			Scanner scnr = new Scanner(file);
 			
 			while (scnr.hasNextLine()) {
-                             //To be done: need to get Score to add
+                //To be done: need to get Score to add
 				scoreList.add();
 			}
 		} catch (FileNotFoundException e) {
@@ -126,7 +129,7 @@ public class GradeEstimator {
 	
 	/**
 	 * getEstimateReport
-	 *
+     *
 	 * PRECONDITIONS: (i.e. the incoming list is assumed to be non-null)
 	 * 
 	 * POSTCONDITIONS: (i.e. the incoming list has been reordered)
@@ -134,8 +137,89 @@ public class GradeEstimator {
 	 * @return estimate Report     Formatted String representing grade estimate
 	 */
 	public String getEstimateReport() {
-                //String.format("%7.2f", weightedAvgScores);
-                //String.format("%5.2f", unweightedAvgScores);
-		return estimateReport;
+		
+		//Creates an array of size 10 to store the categories in scoreList.
+		String[] categories = new String[10];
+		//Stores the weighted percent score.
+		double weightPercentScore = 0.0;
+		//Stores the letter grade estimate.
+		String letterGrade = "";
+		
+		//Stores the string for the estimate report.
+		String report = "Grade estimate is based on ";
+		
+		//Adds the number of scores to the string.
+		report = report + scoreList.size() + " scores./n";
+		
+		//Figure out all the different categories in scoreList.
+		for (int i = 0; i < scoreList.size(); i++) {
+			
+			//Holds the category to check it against others.
+			String cat = "";
+			
+			cat = scoreList.get(i).getCategory();
+			//Cycles through the existing categories to check if cat already
+			//exists, if it doesn't, it is added to the first empty slot in
+			//categories.
+			for (int j = 0; j < categories.length; j++) {
+				if (categories[j] == cat) {
+					break;
+				}
+				else if (categories[j] == "") {
+					categories[j] = cat;
+					break;
+				}
+			}
+		}
+		
+		//For each category, add [categoryA weighted average score]% = 
+		//[categoryA average score]% * [categoryA weight]% for [categoryA name]
+		//to the return string.
+		for (int i = 0; i < categories.length; i++) {
+			
+			//Stores average score %.
+			double aveScore = 0;
+			//Stores weighted average score.
+			double weightAveScore = 0;
+			//Stores weight.
+			double weight = 0;
+			//Stores the total scores in a category.
+			ArrayList<Double> scores = new ArrayList<Double>();
+			//Stores the category name.
+			String cat = "";
+			//ScoreIterator for the given category.
+			ScoreIterator scoreIterator = new ScoreIterator(scoreList, cat);
+			
+			cat = categories[i];
+			
+			//Adds scores to the array of scores, then finds the AVERAGE SCORE %
+			while (scoreIterator.hasNext()) {
+				scores.add(scoreIterator.next().getPercent());
+			}
+			for (int j = 0; j < scores.size(); j++) {
+				aveScore = aveScore + (scores.get(j));
+			}
+			aveScore = (aveScore / scores.size());
+			
+			//TO DO: Gets the weight
+			weight = 1.0;
+			
+			weightAveScore = aveScore * weight;
+			weightPercentScore += weightAveScore;
+			
+			//Adds the new information to our return string
+			report += (String.format("%7.2f", weightAveScore) + 
+					"% = " + String.format("%5,2f", aveScore) + "% of " +
+					String.format("%2.0f", weight) + "% for " + cat + "/n");		
+		}
+		
+		//TO DO: Figures out the gradeEstimate
+		
+		
+		//Adds the footer
+		report = report + "--------------------------------/n" + 
+				String.format("%7.2f", weightPercentScore) + " weighted"
+						+ " percent /nLetter Grade Estimate: " + gradeEstimate);
+		return report;
 	}
 }
