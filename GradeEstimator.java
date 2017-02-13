@@ -23,13 +23,13 @@ import java.util.Scanner;
 //////////////////////////// 80 columns wide //////////////////////////////////
 
 /**
- * (Write a succinct description of this class here. You should avoid
- * wordiness and redundancy. If necessary, additional paragraphs should
- * be preceded by <p>, the html tag for a new paragraph.)
+ * GradeEstimator class takes a text document of grade information
+ * and prints out a succinct overview of your overall grade,
+ * as well as your performance in individual categories.
  *
  * <p>Bugs: (a list of bugs and other problems)
  *
- * @author (your name)
+ * @author Matthew Perry
  */
 public class GradeEstimator {
 	
@@ -208,11 +208,10 @@ public class GradeEstimator {
 	}
 	
 	/**
-	 * getEstimateReport
-     *
-	 * PRECONDITIONS: (i.e. the incoming list is assumed to be non-null)
+	 * getEstimateReport returns a report as a string providing information
+	 * on a students grade percentages, assignments, and overall estimated
+	 * letter grade.
 	 * 
-	 * POSTCONDITIONS: (i.e. the incoming list has been reordered)
 	 *
 	 * @return estimate Report     Formatted String representing grade estimate
 	 */
@@ -306,13 +305,9 @@ public class GradeEstimator {
 	 *
 	 * Throws checked exception: exception must be declared in method header
 	 * using throws clause or using try/catch block.
-	 *
-	 *
-	 * PRECONDITIONS: non-null value for gradeInfo
 	 * 
 	 * POSTCONDITIONS: newly created instance of GradeEstimator is returned
-	 *
-	 * @param gradeInfo         String name of input file
+	 * 
 	 * @return gradeEstimator   Reference to GradeEstimator object that holds 
 	 * 			    all of the data needed to estimate a letter grade
 	 */
