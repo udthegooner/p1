@@ -45,34 +45,42 @@ public class GradeEstimator {
 	 */
 	public static void main(String[] args) {
 		
-		//Estimate Report String
+		//Need instance of class to make to use 
+		//non-static getEstimateReport method
+		GradeEstimator gradeEstimator;
+		//String to hold grade estimate report
 		String estReport = "";
 		
-		//Throws exception if not exactly one command line argument is given. 
+		//If not given exactly one command-line argument,
+		//print USAGE_MESSAGE and use the default input from Config.java
 		if (args.length != 1) {
 			System.out.println(Config.USAGE_MESSAGE);
 		}
 		
-		//If a command line argument is given, create a GradeEstimator,
-		//catching any errors that may arise
 		else {
+
 			try {
-				createGradeEstimatorFromFile(args[0]);
-			}
-			catch (FileNotFoundException e){
-				System.out.println(e);
+				//Attempt to create a new GradeEstimator instance
+				gradeEstimator = createGradeEstimatorFromFile(args[0]);
+				//Get estimate report from newly created gradeEstimator
+				estReport = gradeEstimator.getEstimateReport();
+				//Print estimate report
+				System.out.println(estReport);
+			} 
+			
+			
+			//If exception is caught, print message and exit
+			catch (FileNotFoundException e) {
+				System.out.println(e + " " + args[0] 
+				+ " (The system cannot find the file specified)");
 				System.exit(0);
-			}
-			catch (GradeFileFormatException e){
+				
+			//If exception is caught, print message and exit
+			} catch (GradeFileFormatException e) {
 				System.out.println(e);
 				System.exit(0);
 			}
 		}
-		
-		//If a GradeEstimator was successfully created, produce a grade
-		//estimate.
-		estReport = getEstimateReport();
-		System.out.println(estReport);
 	}
 	
 	
