@@ -161,12 +161,22 @@ public class GradeEstimator {
 			fileString = fileString.concat("\n" + inFS.nextLine());
 		}
 		fileLines = fileString.split("\n");
+		
 		for (int i = 1; i < fileLines.length; i++) {
 			fileLines[i - 1] = fileLines[i];
 			if (i == fileLines.length - 1) {
 				fileLines[i] = "";
 			}
 		}
+		
+		//Removes the comments
+		for (int i = 0; i < fileLines.length; i++) {
+			int poundIndex = fileLines[i].indexOf("#");
+			if (poundIndex > 0) {
+				fileLines[i] = fileLines[i].substring(0, poundIndex);
+			}
+		}
+				
 		
 		//Stores letter grades, cutoffs, categories, weights in arrays, splits
 		//by whitespace.
