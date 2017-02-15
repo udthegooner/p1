@@ -22,16 +22,16 @@ public class Test_GradeEstimator {
 		/////////////////////////////////////////////////////////////////////
 
 		// Run your program without a file specified
-		test("test00 No Grade File specified", null, "Usage message and defaults");
+		//test("test00 No Grade File specified", null, "Usage message and defaults");
 
 		// Run your program with a file specified that does not exist
-		test("test01 Grade File Does NOT Exist", "no_file_exists.txt", "File Not Found ");
+		//test("test01 Grade File Does NOT Exist", "no_file_exists.txt", "File Not Found ");
 
 		// Run your program with a the sample grade_info.txt 
-		test("test02 Grade File Exists", "grade_info.txt", "Letter Grade Estimate: B");
+		//test("test02 Grade File Exists", "grade_info.txt", "Letter Grade Estimate: B");
 
 		// Run your program with a the sample grade_info_bad.txt 
-		test("test03 Bad File Format", "grade_info_bad.txt", "GradeFileFormatException");
+		//test("test03 Bad File Format", "grade_info_bad.txt", "GradeFileFormatException");
 
 		/////////////////////////////////////////////////////////////////////
 		// Add your own additional test runs.

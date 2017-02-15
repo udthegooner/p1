@@ -7,6 +7,7 @@
 //
 //////////////////////////// 80 columns wide //////////////////////////////////
 
+import java.util.ArrayList;
 import java.util.NoSuchElementException;
 
 /**
@@ -22,6 +23,8 @@ public class ScoreIterator implements ScoreIteratorADT <Score> {
 	private ScoreList myList; //the list of scores
 	private int currPos; //current position in the list
 	private String category; //given score category
+	private ArrayList<Score> categoryList = new ArrayList<Score>();
+
 
 
 	/**
@@ -31,6 +34,10 @@ public class ScoreIterator implements ScoreIteratorADT <Score> {
 		this.myList = myList;
 		this.currPos = 0;
 		this.category = category;
+		
+		for (int i=0; i<myList.size(); i++)
+			if (myList.get(i).getCategory().equals(category))
+				categoryList.add(myList.get(i));
 	}
 	
 	/**
@@ -40,13 +47,8 @@ public class ScoreIterator implements ScoreIteratorADT <Score> {
 	 * 		true otherwise
 	 */
 	public boolean hasNext() {
-		/*loop which runs from the next position of currPos till the end of the
-		 *  list to check if there are any more scores of the given category
-		 */
-		for (int i = currPos+1; i < myList.size(); i++)
-			if (myList.get(i).getCategory() == category)
-				return true;
-		return false;
+		
+		return currPos < categoryList.size();
 	}
 
 	/**
@@ -58,13 +60,7 @@ public class ScoreIterator implements ScoreIteratorADT <Score> {
 	public Score next() {
 		if (!hasNext()) throw new NoSuchElementException();
 		
-		/*loop which runs from the next position of currPos till the end of the
-		 *  list to find the next score of the given category*/
-		for (int i = currPos+1; i < myList.size(); i++)
-			if (myList.get(i).getCategory() == category)
-				return myList.get(i);
-		currPos++;
-		return null;
+		return categoryList.get(currPos++);
 	}
 
 }
